@@ -77,7 +77,7 @@ const defaultNews = async () => {
   data.articles.forEach((data) => {
     // console.log(data.link);
     newContainer.innerHTML += `<div class="col-span-2">
-        <figure>
+        <figure class="h-fit">
           <img src="${data.image.srcset[7].url}" alt="" />
         </figure>
         <h1 class="text-xl">
@@ -88,6 +88,7 @@ const defaultNews = async () => {
             >${data.title}</a
           >
         </h1>
+        <p class="text-md">${data.time}</p>
       </div>`;
   });
 };
