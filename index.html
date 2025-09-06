@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- daisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./tailwind.css" />
+    <title>BBC Bangla</title>
+  </head>
+  <body class="font-bangla">
+    <!-- NavBar -->
+    <div class="bg-red-700">
+      <div class="navbar w-11/12 md:w-11/12 xl:w-7/12 lg:w-11/12 mx-auto">
+        <img class="invert w-70" src="./assets/logo.svg" alt="" />
+      </div>
+    </div>
+
+    <!-- categories -->
+    <div class="shadow-sm pt-2">
+      <div class="w-11/12 md:w-11/12 lg:w-11/12 xl:w-7/12 mx-auto text-lg">
+        <ul id="category-container" class="flex gap-6"></ul>
+      </div>
+    </div>
+
+    <!-- main body section -->
+    <main
+      id="news-container"
+      class="w-11/12 md:w-11/12 lg:w-11/12 xl:w-7/12 mx-auto py-10 grid grid-cols-4 gap-5"
+    ></main>
+    <script src="./main.js"></script>
+  </body>
+</html>
