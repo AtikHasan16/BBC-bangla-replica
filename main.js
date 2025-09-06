@@ -50,7 +50,7 @@ const displayNews = (news) => {
     // console.log(data.link);
 
     // console.log(data.image.srcset[7].url);
-    newContainer.innerHTML += `<div class="col-span-2">
+    newContainer.innerHTML += `<div class="">
         <figure>
           <img src="${data.image.srcset[7].url}" alt="" />
         </figure>
@@ -76,7 +76,7 @@ const defaultNews = async () => {
   const newContainer = document.getElementById("news-container");
   data.articles.forEach((data) => {
     // console.log(data.link);
-    newContainer.innerHTML += `<div class="col-span-2">
+    newContainer.innerHTML += `<div class="">
         <figure class="h-fit">
           <img src="${data.image.srcset[7].url}" alt="" />
         </figure>
