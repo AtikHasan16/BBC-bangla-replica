@@ -7,6 +7,7 @@ const loadCategory = async () => {
 // display the category section
 const displayCategory = (data) => {
   const categoryContainer = document.getElementById("category-container");
+
   //   console.log();
 
   data.forEach((d) => {
@@ -17,8 +18,13 @@ const displayCategory = (data) => {
           >
             ${d.title}
           </li>`;
+
+    if (categoryContainer.childElementCount == 1) {
+      categoryContainer.children[0].click();
+    }
   });
 };
+
 //after category Button clicked
 const buttonClicked = (id) => {
   // for button active design
@@ -26,8 +32,7 @@ const buttonClicked = (id) => {
   allId.forEach((element) => {
     element.classList.remove("select-button");
   });
-  //   console.log(document.getElementById(id));
-  const category = document.getElementById(id);
+  const category = document.getElementById(`${id}`);
   category.classList.add("select-button");
 
   // Get news data by category-wise
@@ -36,17 +41,19 @@ const buttonClicked = (id) => {
       `https://news-api-fs.vercel.app/api/categories/${id}`
     );
     const data = await response.json();
-    displayNews(data);
+    displayNews(data.articles);
+    // console.log(data)
   };
   //   news data called
   loadNews();
 };
+
 // display news by clicking category button
 const displayNews = (news) => {
   // console.log(news);
   const newContainer = document.getElementById("news-container");
   newContainer.innerHTML = "";
-  news.articles.forEach((data) => {
+  news.forEach((data) => {
     // console.log(data.link);
 
     // console.log(data.image.srcset[7].url);
@@ -62,37 +69,39 @@ const displayNews = (news) => {
             >${data.title}</a
           >
         </h1>
+        <p class="text-md">${data.time}</p>
       </div>`;
   });
 };
 // default news display
 
-const defaultNews = async () => {
-  const response = await fetch(
-    "https://news-api-fs.vercel.app/api/categories/main"
-  );
-  const data = await response.json();
+// const defaultNews = async () => {
+//   const response = await fetch(
+//     "https://news-api-fs.vercel.app/api/categories/main"
+//   );
+//   const data = await response.json();
 
-  const newContainer = document.getElementById("news-container");
-  data.articles.forEach((data) => {
-    // console.log(data.link);
-    newContainer.innerHTML += `<div class="">
-        <figure class="h-fit">
-          <img src="${data.image.srcset[7].url}" alt="" />
-        </figure>
-        <h1 class="text-xl">
-          <a
-          target="blank"
-            href="${data.link}"
-            class="no-underline hover:underline cursor-pointer decoration-gray-300"
-            >${data.title}</a
-          >
-        </h1>
-        <p class="text-md">${data.time}</p>
-      </div>`;
-  });
-};
+//   const newContainer = document.getElementById("news-container");
+//   data.articles.forEach((data) => {
+//     // console.log(data.link);
+//     newContainer.innerHTML += `<div class="">
+//         <figure class="h-fit">
+//           <img src="${data.image.srcset[7].url}" alt="" />
+//         </figure>
+//         <h1 class="text-xl">
+//           <a
+//           target="blank"
+//             href="${data.link}"
+//             class="no-underline hover:underline cursor-pointer decoration-gray-300"
+//             >${data.title}</a
+//           >
+//         </h1>
+//         <p class="text-md">${data.time}</p>
+//       </div>`;
+//   });
+// };
+
 // default news called
-defaultNews();
+
 // Category data called
 loadCategory();
